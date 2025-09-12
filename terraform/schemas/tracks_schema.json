@@ -1,0 +1,138 @@
+[
+  {
+    "name": "id",
+    "type": "STRING",
+    "mode": "REQUIRED",
+    "description": "The unique Spotify ID for the track."
+  },
+  {
+    "name": "name",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "The name of the track."
+  },
+  {
+    "name": "album_id",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Custom field: The ID of the album this track belongs to."
+  },
+  {
+    "name": "disc_number",
+    "type": "INTEGER",
+    "mode": "NULLABLE",
+    "description": "The disc number (usually 1 unless the album has more than one disc)."
+  },
+  {
+    "name": "track_number",
+    "type": "INTEGER",
+    "mode": "NULLABLE",
+    "description": "The number of the track. If an album has several discs, the track number is the number on the specified disc."
+  },
+  {
+    "name": "duration_ms",
+    "type": "INTEGER",
+    "mode": "NULLABLE",
+    "description": "The track length in milliseconds."
+  },
+  {
+    "name": "explicit",
+    "type": "BOOLEAN",
+    "mode": "NULLABLE",
+    "description": "Whether or not the track has explicit lyrics."
+  },
+  {
+    "name": "is_local",
+    "type": "BOOLEAN",
+    "mode": "NULLABLE",
+    "description": "Whether or not the track is from a local file."
+  },
+  {
+    "name": "type",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "The object type: 'track'."
+  },
+  {
+    "name": "uri",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "The Spotify URI for the track."
+  },
+  {
+    "name": "href",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "A link to the Web API endpoint providing full details of the track."
+  },
+  {
+    "name": "preview_url",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "A link to a 30 second preview (MP3 format) of the track. Can be null."
+  },
+  {
+    "name": "available_markets",
+    "type": "STRING",
+    "mode": "REPEATED",
+    "description": "A list of the country codes in which the track is available."
+  },
+  {
+    "name": "external_urls",
+    "type": "RECORD",
+    "mode": "NULLABLE",
+    "description": "Known external URLs for this track.",
+    "fields": [
+      {
+        "name": "spotify",
+        "type": "STRING",
+        "mode": "NULLABLE"
+      }
+    ]
+  },
+  {
+    "name": "artists",
+    "type": "RECORD",
+    "mode": "REPEATED",
+    "description": "The artists who performed the track.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "STRING",
+        "mode": "NULLABLE"
+      },
+      {
+        "name": "name",
+        "type": "STRING",
+        "mode": "NULLABLE"
+      },
+      {
+        "name": "type",
+        "type": "STRING",
+        "mode": "NULLABLE"
+      },
+      {
+        "name": "uri",
+        "type": "STRING",
+        "mode": "NULLABLE"
+      },
+      {
+        "name": "href",
+        "type": "STRING",
+        "mode": "NULLABLE"
+      },
+      {
+        "name": "external_urls",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+          {
+            "name": "spotify",
+            "type": "STRING",
+            "mode": "NULLABLE"
+          }
+        ]
+      }
+    ]
+  }
+]
