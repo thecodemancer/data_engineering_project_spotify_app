@@ -2,135 +2,168 @@
   {
     "name": "id",
     "type": "STRING",
-    "mode": "REQUIRED",
-    "description": "The unique Spotify ID for the track."
+    "mode": "REQUIRED"
   },
   {
     "name": "name",
     "type": "STRING",
-    "mode": "NULLABLE",
-    "description": "The name of the track."
+    "mode": "NULLABLE"
   },
   {
-    "name": "album_id",
-    "type": "STRING",
-    "mode": "NULLABLE",
-    "description": "Custom field: The ID of the album this track belongs to."
+    "name": "popularity",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
   },
   {
     "name": "disc_number",
     "type": "INTEGER",
-    "mode": "NULLABLE",
-    "description": "The disc number (usually 1 unless the album has more than one disc)."
+    "mode": "NULLABLE"
   },
   {
     "name": "track_number",
     "type": "INTEGER",
-    "mode": "NULLABLE",
-    "description": "The number of the track. If an album has several discs, the track number is the number on the specified disc."
+    "mode": "NULLABLE"
   },
   {
     "name": "duration_ms",
     "type": "INTEGER",
-    "mode": "NULLABLE",
-    "description": "The track length in milliseconds."
+    "mode": "NULLABLE"
   },
   {
     "name": "explicit",
     "type": "BOOLEAN",
-    "mode": "NULLABLE",
-    "description": "Whether or not the track has explicit lyrics."
+    "mode": "NULLABLE"
   },
   {
     "name": "is_local",
     "type": "BOOLEAN",
-    "mode": "NULLABLE",
-    "description": "Whether or not the track is from a local file."
+    "mode": "NULLABLE"
   },
   {
     "name": "type",
     "type": "STRING",
-    "mode": "NULLABLE",
-    "description": "The object type: 'track'."
+    "mode": "NULLABLE"
   },
   {
     "name": "uri",
     "type": "STRING",
-    "mode": "NULLABLE",
-    "description": "The Spotify URI for the track."
+    "mode": "NULLABLE"
   },
   {
     "name": "href",
     "type": "STRING",
-    "mode": "NULLABLE",
-    "description": "A link to the Web API endpoint providing full details of the track."
+    "mode": "NULLABLE"
   },
   {
     "name": "preview_url",
     "type": "STRING",
-    "mode": "NULLABLE",
-    "description": "A link to a 30 second preview (MP3 format) of the track. Can be null."
+    "mode": "NULLABLE"
   },
   {
     "name": "available_markets",
     "type": "STRING",
-    "mode": "REPEATED",
-    "description": "A list of the country codes in which the track is available."
+    "mode": "REPEATED"
   },
   {
     "name": "external_urls",
     "type": "RECORD",
     "mode": "NULLABLE",
-    "description": "Known external URLs for this track.",
     "fields": [
-      {
-        "name": "spotify",
-        "type": "STRING",
-        "mode": "NULLABLE"
-      }
+      { "name": "spotify", "type": "STRING", "mode": "NULLABLE" }
+    ]
+  },
+  {
+    "name": "external_ids",
+    "type": "RECORD",
+    "mode": "NULLABLE",
+    "description": "Known external IDs for the track.",
+    "fields": [
+        { "name": "isrc", "type": "STRING", "mode": "NULLABLE" },
+        { "name": "ean", "type": "STRING", "mode": "NULLABLE" },
+        { "name": "upc", "type": "STRING", "mode": "NULLABLE" }
     ]
   },
   {
     "name": "artists",
     "type": "RECORD",
     "mode": "REPEATED",
-    "description": "The artists who performed the track.",
     "fields": [
-      {
-        "name": "id",
-        "type": "STRING",
-        "mode": "NULLABLE"
-      },
-      {
-        "name": "name",
-        "type": "STRING",
-        "mode": "NULLABLE"
-      },
-      {
-        "name": "type",
-        "type": "STRING",
-        "mode": "NULLABLE"
-      },
-      {
-        "name": "uri",
-        "type": "STRING",
-        "mode": "NULLABLE"
-      },
-      {
-        "name": "href",
-        "type": "STRING",
-        "mode": "NULLABLE"
-      },
+      { "name": "id", "type": "STRING", "mode": "NULLABLE" },
+      { "name": "name", "type": "STRING", "mode": "NULLABLE" },
+      { "name": "type", "type": "STRING", "mode": "NULLABLE" },
+      { "name": "uri", "type": "STRING", "mode": "NULLABLE" },
+      { "name": "href", "type": "STRING", "mode": "NULLABLE" },
       {
         "name": "external_urls",
         "type": "RECORD",
         "mode": "NULLABLE",
         "fields": [
-          {
-            "name": "spotify",
-            "type": "STRING",
-            "mode": "NULLABLE"
-          }
+          { "name": "spotify", "type": "STRING", "mode": "NULLABLE" }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "album",
+    "type": "RECORD",
+    "mode": "NULLABLE",
+    "description": "The simplified album object the track belongs to.",
+    "fields": [
+      { "name": "id", "type": "STRING", "mode": "NULLABLE" },
+      { "name": "name", "type": "STRING", "mode": "NULLABLE" },
+      { "name": "album_type", "type": "STRING", "mode": "NULLABLE" },
+      { "name": "album_group", "type": "STRING", "mode": "NULLABLE" },
+      { "name": "total_tracks", "type": "INTEGER", "mode": "NULLABLE" },
+      { "name": "release_date", "type": "STRING", "mode": "NULLABLE" },
+      { "name": "release_date_precision", "type": "STRING", "mode": "NULLABLE" },
+      { "name": "uri", "type": "STRING", "mode": "NULLABLE" },
+      { "name": "href", "type": "STRING", "mode": "NULLABLE" },
+      { "name": "type", "type": "STRING", "mode": "NULLABLE" },
+      { "name": "available_markets", "type": "STRING", "mode": "REPEATED" },
+      {
+        "name": "external_urls",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+          { "name": "spotify", "type": "STRING", "mode": "NULLABLE" }
+        ]
+      },
+      {
+        "name": "restrictions",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+          { "name": "reason", "type": "STRING", "mode": "NULLABLE" }
+        ]
+      },
+      {
+        "name": "images",
+        "type": "RECORD",
+        "mode": "REPEATED",
+        "fields": [
+          { "name": "url", "type": "STRING", "mode": "NULLABLE" },
+          { "name": "height", "type": "INTEGER", "mode": "NULLABLE" },
+          { "name": "width", "type": "INTEGER", "mode": "NULLABLE" }
+        ]
+      },
+      {
+        "name": "artists",
+        "type": "RECORD",
+        "mode": "REPEATED",
+        "fields": [
+            { "name": "id", "type": "STRING", "mode": "NULLABLE" },
+            { "name": "name", "type": "STRING", "mode": "NULLABLE" },
+            { "name": "type", "type": "STRING", "mode": "NULLABLE" },
+            { "name": "uri", "type": "STRING", "mode": "NULLABLE" },
+            { "name": "href", "type": "STRING", "mode": "NULLABLE" },
+            {
+              "name": "external_urls",
+              "type": "RECORD",
+              "mode": "NULLABLE",
+              "fields": [
+                { "name": "spotify", "type": "STRING", "mode": "NULLABLE" }
+              ]
+            }
         ]
       }
     ]

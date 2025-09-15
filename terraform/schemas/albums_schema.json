@@ -2,146 +2,207 @@
   {
     "name": "id",
     "type": "STRING",
-    "mode": "REQUIRED",
-    "description": "The unique Spotify ID for the album."
+    "mode": "REQUIRED"
   },
   {
     "name": "name",
     "type": "STRING",
-    "mode": "NULLABLE",
-    "description": "The name of the album."
+    "mode": "NULLABLE"
   },
   {
     "name": "album_type",
     "type": "STRING",
-    "mode": "NULLABLE",
-    "description": "The type of the album: one of album, single, or compilation."
-  },
-  {
-    "name": "album_group",
-    "type": "STRING",
-    "mode": "NULLABLE",
-    "description": "The field is present when getting an artist’s albums. Possible values are album, single, compilation, appears_on."
+    "mode": "NULLABLE"
   },
   {
     "name": "total_tracks",
     "type": "INTEGER",
-    "mode": "NULLABLE",
-    "description": "The number of tracks in the album."
+    "mode": "NULLABLE"
   },
   {
     "name": "release_date",
     "type": "STRING",
-    "mode": "NULLABLE",
-    "description": "The date the album was first released. Stored as STRING because precision can vary (e.g., '1981-12' or '1981')."
+    "mode": "NULLABLE"
   },
   {
     "name": "release_date_precision",
     "type": "STRING",
-    "mode": "NULLABLE",
-    "description": "The precision with which release_date value is known: year, month, or day."
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "popularity",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "label",
+    "type": "STRING",
+    "mode": "NULLABLE"
   },
   {
     "name": "type",
     "type": "STRING",
-    "mode": "NULLABLE",
-    "description": "The object type: 'album'."
+    "mode": "NULLABLE"
   },
   {
     "name": "uri",
     "type": "STRING",
-    "mode": "NULLABLE",
-    "description": "The Spotify URI for the album."
+    "mode": "NULLABLE"
   },
   {
     "name": "href",
     "type": "STRING",
-    "mode": "NULLABLE",
-    "description": "A link to the Web API endpoint providing full details of the album."
+    "mode": "NULLABLE"
   },
   {
     "name": "available_markets",
     "type": "STRING",
-    "mode": "REPEATED",
-    "description": "A list of the country codes in which the album is available."
+    "mode": "REPEATED"
   },
   {
     "name": "external_urls",
     "type": "RECORD",
     "mode": "NULLABLE",
-    "description": "Known external URLs for this album.",
     "fields": [
-      {
-        "name": "spotify",
-        "type": "STRING",
-        "mode": "NULLABLE"
-      }
+      { "name": "spotify", "type": "STRING", "mode": "NULLABLE" }
     ]
   },
   {
     "name": "images",
     "type": "RECORD",
     "mode": "REPEATED",
-    "description": "The cover art for the album in various sizes.",
     "fields": [
-      {
-        "name": "url",
-        "type": "STRING",
-        "mode": "NULLABLE"
-      },
-      {
-        "name": "height",
-        "type": "INTEGER",
-        "mode": "NULLABLE"
-      },
-      {
-        "name": "width",
-        "type": "INTEGER",
-        "mode": "NULLABLE"
-      }
+      { "name": "url", "type": "STRING", "mode": "NULLABLE" },
+      { "name": "height", "type": "INTEGER", "mode": "NULLABLE" },
+      { "name": "width", "type": "INTEGER", "mode": "NULLABLE" }
     ]
   },
   {
     "name": "artists",
     "type": "RECORD",
     "mode": "REPEATED",
-    "description": "The artists associated with the album.",
     "fields": [
-      {
-        "name": "id",
-        "type": "STRING",
-        "mode": "NULLABLE"
-      },
-      {
-        "name": "name",
-        "type": "STRING",
-        "mode": "NULLABLE"
-      },
-      {
-        "name": "type",
-        "type": "STRING",
-        "mode": "NULLABLE"
-      },
-      {
-        "name": "uri",
-        "type": "STRING",
-        "mode": "NULLABLE"
-      },
-      {
-        "name": "href",
-        "type": "STRING",
-        "mode": "NULLABLE"
-      },
+      { "name": "id", "type": "STRING", "mode": "NULLABLE" },
+      { "name": "name", "type": "STRING", "mode": "NULLABLE" },
+      { "name": "type", "type": "STRING", "mode": "NULLABLE" },
+      { "name": "uri", "type": "STRING", "mode": "NULLABLE" },
+      { "name": "href", "type": "STRING", "mode": "NULLABLE" },
       {
         "name": "external_urls",
         "type": "RECORD",
         "mode": "NULLABLE",
         "fields": [
-          {
-            "name": "spotify",
-            "type": "STRING",
-            "mode": "NULLABLE"
-          }
+          { "name": "spotify", "type": "STRING", "mode": "NULLABLE" }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "copyrights",
+    "type": "RECORD",
+    "mode": "REPEATED",
+    "fields": [
+        { "name": "text", "type": "STRING", "mode": "NULLABLE" },
+        { "name": "type", "type": "STRING", "mode": "NULLABLE" }
+    ]
+  },
+  {
+    "name": "external_ids",
+    "type": "RECORD",
+    "mode": "NULLABLE",
+    "fields": [
+        { "name": "upc", "type": "STRING", "mode": "NULLABLE" }
+    ]
+  },
+  {
+    "name": "genres",
+    "type": "STRING",
+    "mode": "REPEATED"
+  },
+  {
+    "name": "tracks",
+    "type": "RECORD",
+    "mode": "NULLABLE",
+    "fields": [
+      { "name": "href", "type": "STRING", "mode": "NULLABLE"},
+      { "name": "limit", "type": "INTEGER", "mode": "NULLABLE"},
+      { "name": "next", "type": "STRING", "mode": "NULLABLE"},
+      { "name": "offset", "type": "INTEGER", "mode": "NULLABLE"},
+      { "name": "previous", "type": "STRING", "mode": "NULLABLE"},
+      { "name": "total", "type": "INTEGER", "mode": "NULLABLE"},
+      {
+        "name": "items",
+        "type": "RECORD",
+        "mode": "REPEATED",
+        "fields": [
+            { "name": "id", "type": "STRING", "mode": "NULLABLE" },
+            { "name": "name", "type": "STRING", "mode": "NULLABLE" },
+            { "name": "track_number", "type": "INTEGER", "mode": "NULLABLE" },
+            { "name": "disc_number", "type": "INTEGER", "mode": "NULLABLE" },
+            { "name": "duration_ms", "type": "INTEGER", "mode": "NULLABLE" },
+            { "name": "explicit", "type": "BOOLEAN", "mode": "NULLABLE" },
+            { "name": "uri", "type": "STRING", "mode": "NULLABLE" },
+            { "name": "is_local", "type": "BOOLEAN", "mode": "NULLABLE" },
+            { "name": "available_markets", "type": "STRING", "mode": "REPEATED" },
+            { "name": "href", "type": "STRING", "mode": "NULLABLE" },
+            { "name": "preview_url", "type": "STRING", "mode": "NULLABLE" },
+            { "name": "type", "type": "STRING", "mode": "NULLABLE" },
+            {
+              "name": "external_urls",
+              "type": "RECORD",
+              "mode": "NULLABLE",
+              "fields": [
+                { "name": "spotify", "type": "STRING", "mode": "NULLABLE" }
+              ]
+            },
+            {
+              "name": "artists",
+              "type": "RECORD",
+              "mode": "REPEATED",
+              "fields": [
+                  { "name": "id", "type": "STRING", "mode": "NULLABLE" },
+                  { "name": "name", "type": "STRING", "mode": "NULLABLE" },
+                  { "name": "type", "type": "STRING", "mode": "NULLABLE" },
+                  { "name": "uri", "type": "STRING", "mode": "NULLABLE" },
+                  { "name": "href", "type": "STRING", "mode": "NULLABLE" },
+                  {
+                    "name": "external_urls",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "fields": [
+                      { "name": "spotify", "type": "STRING", "mode": "NULLABLE" }
+                    ]
+                  }
+              ]
+            },
+            {
+              "name": "linked_from",
+              "type": "RECORD",
+              "mode": "NULLABLE",
+              "fields": [
+                  { "name": "id", "type": "STRING", "mode": "NULLABLE" },
+                  { "name": "type", "type": "STRING", "mode": "NULLABLE" },
+                  { "name": "uri", "type": "STRING", "mode": "NULLABLE" },
+                  { "name": "href", "type": "STRING", "mode": "NULLABLE" },
+                  {
+                    "name": "external_urls",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "fields": [
+                      { "name": "spotify", "type": "STRING", "mode": "NULLABLE" }
+                    ]
+                  }
+              ]
+            },
+            {
+              "name": "restrictions",
+              "type": "RECORD",
+              "mode": "NULLABLE",
+              "description": "Included when content restriction is applied. See Spotify API docs.",
+              "fields": [
+                { "name": "reason", "type": "STRING", "mode": "NULLABLE" }
+              ]
+            }
         ]
       }
     ]

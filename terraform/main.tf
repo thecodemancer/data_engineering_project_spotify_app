@@ -83,10 +83,14 @@ resource "google_bigquery_table" "albums_table" {
   dataset_id = google_bigquery_dataset.spotify_dataset.dataset_id
   table_id   = "albums"
   schema     = file("schemas/albums_schema.json")
+# Temporarily disable deletion protection to allow recreation
+  deletion_protection = false   
 }
 
 resource "google_bigquery_table" "tracks_table" {
   dataset_id = google_bigquery_dataset.spotify_dataset.dataset_id
   table_id   = "tracks"
   schema     = file("schemas/tracks_schema.json")
+
+  deletion_protection = false     
 }
